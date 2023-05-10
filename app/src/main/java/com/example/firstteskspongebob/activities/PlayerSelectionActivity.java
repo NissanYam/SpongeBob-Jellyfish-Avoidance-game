@@ -1,41 +1,37 @@
-package com.example.firstteskspongebob;
+package com.example.firstteskspongebob.activities;
 
-import static com.example.firstteskspongebob.GameLogic.JELLYFISH;
-
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Vibrator;
+import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.LinearLayoutCompat;
 
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textview.MaterialTextView;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Timer;
-import java.util.TimerTask;
+import com.example.firstteskspongebob.R;
+import com.example.firstteskspongebob.activities.GameActivity;
+import com.example.firstteskspongebob.activities.MainActivity;
+import com.example.firstteskspongebob.logic.Player;
 
 public class PlayerSelectionActivity extends AppCompatActivity {
     private LinearLayoutCompat select_LL_actors;
     private AppCompatImageView select_img_spongebob;
     private AppCompatImageView select_img_petrick;
     private AppCompatImageView select_img_sandy;
-    public static int PlayerType;
+    private int PlayerType;
     public static final int SPONGBOB = 1;
     public static final int PETRICK = 2;
     public static final int SANDY = 3;
+    private Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_selection);
+        bundle = getIntent().getBundleExtra(MainActivity.KEY_BUNDLE);
         findViews();
         initViews();
+
     }
     private void initViews() {
         select_img_spongebob.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +57,9 @@ public class PlayerSelectionActivity extends AppCompatActivity {
         });
     }
     private void openGame() {
-        Intent intent = new Intent(PlayerSelectionActivity.this, GameActivity.class);
+        Intent intent = new Intent(this, GameActivity.class);
+        this.bundle.putInt(GameActivity.KEY_PLAYER_IMAGE,PlayerType);
+        intent.putExtra(MainActivity.KEY_BUNDLE, bundle);
         startActivity(intent);
         finish();
     }

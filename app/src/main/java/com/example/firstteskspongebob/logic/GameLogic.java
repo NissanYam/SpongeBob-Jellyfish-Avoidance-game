@@ -1,4 +1,4 @@
-package com.example.firstteskspongebob;
+package com.example.firstteskspongebob.logic;
 
 import androidx.annotation.NonNull;
 
@@ -11,8 +11,9 @@ public class GameLogic {
     private int life;
     private int rowsGameBoard;
     private int colsGameBoard;
-    public static final int JELLYFISH = 1;
     public static final int NONE = 0;
+    public static final int JELLYFISH = 1;
+    public static final int BUBBLE = 2;
     private int score;
     public GameLogic() {}
     public GameLogic(int rows, int cols ,int life) {
@@ -98,12 +99,18 @@ public class GameLogic {
             gameBoard[0][i] = NONE;
         }
         int rand = new Random().nextInt(colsGameBoard);
-        gameBoard[0][rand] = JELLYFISH;
+        boolean jellyOrBubble = true;
+        if (score%4 == 0)
+            jellyOrBubble = new Random().nextBoolean();
+        gameBoard[0][rand] = jellyOrBubble == true ? JELLYFISH : BUBBLE;
     }
-    public boolean collisionTest(int[] arrayToTest){
+    public boolean collisionTest(@NonNull int[] arrayToTest){
         if(arrayToTest[actorPlace] == JELLYFISH){
             reduceLife();
             return true;
+        }
+        if(arrayToTest[actorPlace] == BUBBLE){
+            score+=3;
         }
         score++;
         return false;
