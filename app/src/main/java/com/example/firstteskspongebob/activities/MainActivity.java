@@ -1,11 +1,8 @@
 package com.example.firstteskspongebob.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
@@ -24,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     public static final int BUTTON_MODE_SLOW = 0;
     public static final int BUTTON_MODE_FAST = 1;
     public static final int SENSOR_MODE = 2;
-    private final int LOCATION_PERMISSION_REQUEST_CODE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +29,7 @@ public class MainActivity extends AppCompatActivity {
         findViews();
         checkSensors();
         onActionBTN();
-        ActivityCompat.requestPermissions(this,
-                new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},
-                LOCATION_PERMISSION_REQUEST_CODE);
+
     }
     @Override
     protected void onStart() {
@@ -88,19 +82,6 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(KEY_BUNDLE, bundle);
         menu_EDT_playerName.setText(null);
         startActivity(intent);
-    }
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission granted
-                // TODO: Perform location-related task
-            } else {
-                // Permission denied
-                // TODO: Handle permission denied case
-            }
-        }
     }
 
 }

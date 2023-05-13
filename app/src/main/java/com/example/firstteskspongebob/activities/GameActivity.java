@@ -3,15 +3,12 @@ package com.example.firstteskspongebob.activities;
 import static com.example.firstteskspongebob.logic.GameLogic.BUBBLE;
 import static com.example.firstteskspongebob.logic.GameLogic.JELLYFISH;
 import static com.example.firstteskspongebob.logic.GameLogic.NONE;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.LinearLayoutCompat;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import com.example.firstteskspongebob.interfaces.CallBack_movement;
 import com.example.firstteskspongebob.logic.GameLogic;
 import com.example.firstteskspongebob.MySignal;
@@ -19,7 +16,6 @@ import com.example.firstteskspongebob.R;
 import com.example.firstteskspongebob.MoveDetector;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Timer;
@@ -357,4 +353,5 @@ public class GameActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
 }

@@ -1,15 +1,10 @@
 package com.example.firstteskspongebob.activities;
 import android.app.Application;
-import android.content.Context;
-import android.media.MediaPlayer;
-import android.os.Vibrator;
-
 import com.example.firstteskspongebob.MSPV;
 import com.example.firstteskspongebob.MySignal;
 import com.example.firstteskspongebob.R;
 import com.example.firstteskspongebob.logic.Player;
 import com.example.firstteskspongebob.logic.TopTenPlayers;
-
 import java.util.ArrayList;
 
 public class App extends Application{

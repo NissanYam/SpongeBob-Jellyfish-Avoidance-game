@@ -5,13 +5,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.widget.Toast;
-
-import com.example.firstteskspongebob.MySignal;
-import com.example.firstteskspongebob.activities.GameActivity;
 import com.example.firstteskspongebob.interfaces.CallBack_movement;
-
-import java.text.DecimalFormat;
 
 public class MoveDetector {
     private CallBack_movement callBack_movement;

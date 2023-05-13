@@ -34,8 +34,8 @@ public class TopPlayersActivity extends AppCompatActivity {
     private static final String KEY_BUNDLE = "KEY_BUNDLE";
     public static final String KEY_SPEED = "KEY_SPEED";
     public static final String KEY_PLAYER_IMAGE = "KEY_PLAYER_IMAGE";
-    public final String LAT = "LAT";
-    public final String LNG = "LNG";
+    public static final String KEY_LAT = "KEY_LAT";
+    public static final String KEY_LNG = "KEY_LNG";
     private Bundle bundle;
     private MaterialTextView top_players_LBL_title;
     private MaterialButton top_players_BTN_main_menu;
@@ -43,6 +43,7 @@ public class TopPlayersActivity extends AppCompatActivity {
     private Fragment_List fragmentList;
     private Fragment_Map fragmentMap;
     private final int TOP = 10;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,13 +92,15 @@ public class TopPlayersActivity extends AppCompatActivity {
 
     }
     private void addNewPlayerToTopTen() {
+        double lat = bundle.getDouble(KEY_LAT , 0.0);
+        double lng = bundle.getDouble(KEY_LNG, 0.0);
         Player currentPlayer = new Player()
                 .setName(bundle.getString(KEY_PLAYER_NAME))
                 .setScore(bundle.getInt(KEY_SCORE))
                 .setGameType(bundle.getInt(GameActivity.KEY_MODE))
                 .setSpeed(bundle.getInt(KEY_SPEED))
-                .setLng(getLocation(LNG))
-                .setLat(getLocation(LAT));
+                .setLng(lng)
+                .setLat(lat);
         switch (bundle.getInt(KEY_PLAYER_IMAGE)) {
             case (PlayerSelectionActivity.SPONGBOB):
                 currentPlayer.setImage(R.drawable.img_spongebob);
@@ -121,29 +124,6 @@ public class TopPlayersActivity extends AppCompatActivity {
             }
         }
         MSPV.getMe().saveTopTenPlayers(new TopTenPlayers().setTopTen(allPlayers));
-    }
-    private double getLocation(String option) {
-
-        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                &&
-                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return 0.0;
-        } else {
-            Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            if (location == null) {
-                return 0.0;
-            } else {
-                switch (option) {
-                    case LAT:
-                        return location.getLatitude();
-                    case LNG:
-                        return location.getLongitude();
-                    default:
-                        return 0.0;
-                }
-            }
-        }
     }
     private void goToPlayerSelection() {
         Intent intent = new Intent(this, PlayerSelectionActivity.class);
@@ -169,7 +149,7 @@ public class TopPlayersActivity extends AppCompatActivity {
     private CallBack_List callBackList = new CallBack_List() {
         @Override
         public void playerCliced(Player player) {
-            MySignal.getInstance().toast(player.getName() +" "+ player.getScore());
+            MySignal.getInstance().toast("Latitude = "+player.getLat()+"\nLongitude = "+player.getLng());
             fragmentMap.showOnMap(player);
         }
     };
