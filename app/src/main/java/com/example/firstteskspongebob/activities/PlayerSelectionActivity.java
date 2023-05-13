@@ -73,9 +73,14 @@ public class PlayerSelectionActivity extends AppCompatActivity {
         Intent intent = new Intent(this, GameActivity.class);
         this.bundle.putInt(GameActivity.KEY_PLAYER_IMAGE, PlayerType);
         intent.putExtra(MainActivity.KEY_BUNDLE, bundle);
-        bundle.putDouble(TopPlayersActivity.KEY_LAT, currentLocation.getLatitude());
-        bundle.putDouble(TopPlayersActivity.KEY_LNG, currentLocation.getLongitude());
-        MySignal.getInstance().toast("Latitude = "+currentLocation.getLatitude()+"\nLongitude = "+currentLocation.getLongitude());
+        try{
+            bundle.putDouble(TopPlayersActivity.KEY_LAT, currentLocation.getLatitude());
+            bundle.putDouble(TopPlayersActivity.KEY_LNG, currentLocation.getLongitude());
+            MySignal.getInstance().toast("Latitude = "+currentLocation.getLatitude()+"\nLongitude = "+currentLocation.getLongitude());
+        }catch (Exception e){
+            bundle.putDouble(TopPlayersActivity.KEY_LAT, 0);
+            bundle.putDouble(TopPlayersActivity.KEY_LNG, 0);
+        }
         startActivity(intent);
         finish();
     }
