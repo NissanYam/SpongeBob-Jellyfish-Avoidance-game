@@ -2,17 +2,11 @@ package com.example.firstteskspongebob.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.LinearLayoutCompat;
-
 import com.example.firstteskspongebob.R;
-import com.example.firstteskspongebob.activities.GameActivity;
-import com.example.firstteskspongebob.activities.MainActivity;
-import com.example.firstteskspongebob.logic.Player;
 
 public class PlayerSelectionActivity extends AppCompatActivity {
     private LinearLayoutCompat select_LL_actors;

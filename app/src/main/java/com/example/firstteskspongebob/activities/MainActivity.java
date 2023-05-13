@@ -2,19 +2,15 @@ package com.example.firstteskspongebob.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-
 import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-
 import com.example.firstteskspongebob.MySignal;
 import com.example.firstteskspongebob.R;
 import com.google.android.material.button.MaterialButton;

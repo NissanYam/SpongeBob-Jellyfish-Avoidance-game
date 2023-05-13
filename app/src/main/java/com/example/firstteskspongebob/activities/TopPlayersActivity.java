@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +12,6 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
-
 import com.example.firstteskspongebob.interfaces.CallBack_List;
 import com.example.firstteskspongebob.MySignal;
 import com.example.firstteskspongebob.activities.fregments.Fragment_List;
@@ -45,8 +43,6 @@ public class TopPlayersActivity extends AppCompatActivity {
     private Fragment_List fragmentList;
     private Fragment_Map fragmentMap;
     private final int TOP = 10;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,7 +145,6 @@ public class TopPlayersActivity extends AppCompatActivity {
             }
         }
     }
-
     private void goToPlayerSelection() {
         Intent intent = new Intent(this, PlayerSelectionActivity.class);
         intent.putExtra(MainActivity.KEY_BUNDLE, bundle);
