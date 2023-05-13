@@ -1,7 +1,7 @@
 # SpongeBob-Jellyfish-Avoidance-game
 
 #To run the game run Game_Activity
-The goal of the game is to get as many points as possible, avoid the jellyfish and collect the bubbles.
+#The goal of the game is to get as many points as possible, avoid the jellyfish and collect the bubbles.
 The score increases with each step in the game.
 Each bubble you collect adds 4 points.
 If you encounter a jellyfish, the score does not increase.
